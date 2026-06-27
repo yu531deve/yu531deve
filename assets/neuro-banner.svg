@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 220" width="850" height="220" font-family="'JetBrains Mono','Courier New',monospace">
+  <defs>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3.5"/>
+    </filter>
+    <linearGradient id="eegGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2DE8B0" stop-opacity="0.15"/>
+      <stop offset="50%" stop-color="#2DE8B0" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#2DE8B0" stop-opacity="0.15"/>
+    </linearGradient>
+    <clipPath id="card"><rect x="1" y="1" width="848" height="218" rx="14"/></clipPath>
+    <style>
+      @keyframes flow   { to { stroke-dashoffset: -24; } }
+      @keyframes corepulse { 0%,100% { opacity:.55 } 50% { opacity:1 } }
+      @keyframes blink  { 0%,49% { opacity:1 } 50%,100% { opacity:0 } }
+      @keyframes drift  { 0%,100% { opacity:.18 } 50% { opacity:.42 } }
+      .edge { stroke:#2DE8B0; stroke-width:1; opacity:.35; stroke-dasharray:3 5; animation:flow 1.6s linear infinite; }
+      .core { animation:corepulse 2.6s ease-in-out infinite; }
+      .cursor { animation:blink 1s step-end infinite; }
+      .grid  { animation:drift 4s ease-in-out infinite; }
+    </style>
+  </defs>
+
+  <g clip-path="url(#card)">
+    <rect x="0" y="0" width="850" height="220" fill="#0d1117"/>
+    <rect x="1" y="1" width="848" height="218" rx="14" fill="none" stroke="#C9A84C" stroke-opacity="0.35" stroke-width="1"/>
+
+    <!-- faint scan grid -->
+    <g class="grid" stroke="#C9A84C" stroke-width="0.5" stroke-opacity="0.5">
+      <line x1="0" y1="55" x2="850" y2="55"/><line x1="0" y1="110" x2="850" y2="110"/><line x1="0" y1="165" x2="850" y2="165"/>
+    </g>
+
+    <!-- ===== CONNECTOME ===== -->
+    <g transform="translate(0,-8)">
+      <!-- rotating scanner ring -->
+      <g transform="translate(180,100)">
+        <circle r="92" fill="none" stroke="#C9A84C" stroke-opacity="0.18" stroke-width="1" stroke-dasharray="6 10">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="22s" repeatCount="indefinite"/>
+        </circle>
+        <circle r="70" fill="none" stroke="#2DE8B0" stroke-opacity="0.12" stroke-width="1" stroke-dasharray="2 12">
+          <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="16s" repeatCount="indefinite"/>
+        </circle>
+      </g>
+
+      <!-- edges -->
+      <g>
+        <line class="edge" x1="95" y1="98" x2="120" y2="68"/>
+        <line class="edge" x1="120" y1="68" x2="170" y2="48"/>
+        <line class="edge" x1="170" y1="48" x2="220" y2="63"/>
+        <line class="edge" x1="220" y1="63" x2="260" y2="83"/>
+        <line class="edge" x1="120" y1="68" x2="130" y2="108"/>
+        <line class="edge" x1="170" y1="48" x2="180" y2="98"/>
+        <line class="edge" x1="220" y1="63" x2="235" y2="108"/>
+        <line class="edge" x1="130" y1="108" x2="180" y2="98"/>
+        <line class="edge" x1="180" y1="98" x2="235" y2="108"/>
+        <line class="edge" x1="130" y1="108" x2="150" y2="143"/>
+        <line class="edge" x1="180" y1="98" x2="150" y2="143"/>
+        <line class="edge" x1="180" y1="98" x2="205" y2="148"/>
+        <line class="edge" x1="235" y1="108" x2="205" y2="148"/>
+        <line class="edge" x1="150" y1="143" x2="205" y2="148"/>
+        <line class="edge" x1="95" y1="98" x2="130" y2="108"/>
+        <line class="edge" x1="260" y1="83" x2="235" y2="108"/>
+      </g>
+
+      <!-- traveling signals -->
+      <g fill="#ffffff" filter="url(#glow)">
+        <circle r="2.4"><animateMotion dur="2.2s" repeatCount="indefinite" path="M95,98 L120,68 L170,48 L220,63 L260,83"/></circle>
+        <circle r="2.4"><animateMotion dur="2.6s" begin="0.6s" repeatCount="indefinite" path="M130,108 L180,98 L235,108"/></circle>
+        <circle r="2.4"><animateMotion dur="2.4s" begin="1.1s" repeatCount="indefinite" path="M150,143 L180,98 L170,48"/></circle>
+      </g>
+
+      <!-- nodes (halo + core) -->
+      <g filter="url(#glow)">
+        <g transform="translate(95,98)">
+          <circle r="5" fill="#2DE8B0" fill-opacity="0.4"><animate attributeName="r" values="4;11;4" dur="3s" repeatCount="indefinite"/><animate attributeName="fill-opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite"/></circle>
+          <circle class="core" r="3.5" fill="#2DE8B0"/>
+        </g>
+        <g transform="translate(170,48)">
+          <circle r="5" fill="#C9A84C" fill-opacity="0.4"><animate attributeName="r" values="4;12;4" dur="3.4s" begin="0.4s" repeatCount="indefinite"/><animate attributeName="fill-opacity" values="0.45;0;0.45" dur="3.4s" begin="0.4s" repeatCount="indefinite"/></circle>
+          <circle class="core" r="4" fill="#C9A84C" style="animation-delay:.4s"/>
+        </g>
+        <g transform="translate(180,98)">
+          <circle r="6" fill="#2DE8B0" fill-opacity="0.4"><animate attributeName="r" values="5;14;5" dur="3.2s" begin="0.8s" repeatCount="indefinite"/><animate attributeName="fill-opacity" values="0.5;0;0.5" dur="3.2s" begin="0.8s" repeatCount="indefinite"/></circle>
+          <circle class="core" r="4.5" fill="#ffffff" style="animation-delay:.8s"/>
+        </g>
+        <g transform="translate(235,108)">
+          <circle r="5" fill="#C9A84C" fill-opacity="0.4"><animate attributeName="r" values="4;11;4" dur="2.8s" begin="1.2s" repeatCount="indefinite"/><animate attributeName="fill-opacity" values="0.4;0;0.4" dur="2.8s" begin="1.2s" repeatCount="indefinite"/></circle>
+          <circle class="core" r="3.5" fill="#C9A84C" style="animation-delay:1.2s"/>
+        </g>
+        <g transform="translate(260,83)"><circle class="core" r="3" fill="#2DE8B0"/></g>
+        <g transform="translate(120,68)"><circle class="core" r="3" fill="#2DE8B0" style="animation-delay:.6s"/></g>
+        <g transform="translate(220,63)"><circle class="core" r="3" fill="#C9A84C" style="animation-delay:.9s"/></g>
+        <g transform="translate(130,108)"><circle class="core" r="3" fill="#2DE8B0" style="animation-delay:1.4s"/></g>
+        <g transform="translate(150,143)"><circle class="core" r="3" fill="#C9A84C" style="animation-delay:1.7s"/></g>
+        <g transform="translate(205,148)"><circle class="core" r="3" fill="#2DE8B0" style="animation-delay:2.0s"/></g>
+      </g>
+    </g>
+
+    <!-- ===== TEXT ===== -->
+    <g transform="translate(415,78)">
+      <text x="0" y="0" fill="#C9A84C" font-size="30" font-weight="700" letter-spacing="1">NEUROSCIENCE
+        <tspan fill="#2DE8B0"> &#215; </tspan><tspan fill="#ffffff">ML</tspan></text>
+      <text x="2" y="30" fill="#2DE8B0" font-size="13" opacity="0.85" letter-spacing="2">connectome &#183; eeg &#183; operator learning</text>
+      <text x="2" y="56" fill="#8b949e" font-size="12">&gt; decoding the brain<tspan class="cursor" fill="#C9A84C">_</tspan></text>
+    </g>
+
+    <!-- ===== EEG SCROLL ===== -->
+    <g filter="url(#softglow)" opacity="0.9">
+      <g>
+        <animateTransform attributeName="transform" type="translate" from="0,0" to="-280,0" dur="3s" repeatCount="indefinite"/>
+        <g stroke="url(#eegGrad)" stroke-width="2" fill="none" stroke-linejoin="round" stroke-linecap="round">
+          <path transform="translate(0,0)"    d="M0,196 H35 L45,178 L52,196 H85 L95,182 L103,210 L111,156 L119,196 H160 L172,186 L184,196 H230 L240,170 L248,196 H280"/>
+          <path transform="translate(280,0)"  d="M0,196 H35 L45,178 L52,196 H85 L95,182 L103,210 L111,156 L119,196 H160 L172,186 L184,196 H230 L240,170 L248,196 H280"/>
+          <path transform="translate(560,0)"  d="M0,196 H35 L45,178 L52,196 H85 L95,182 L103,210 L111,156 L119,196 H160 L172,186 L184,196 H230 L240,170 L248,196 H280"/>
+          <path transform="translate(840,0)"  d="M0,196 H35 L45,178 L52,196 H85 L95,182 L103,210 L111,156 L119,196 H160 L172,186 L184,196 H230 L240,170 L248,196 H280"/>
+          <path transform="translate(1120,0)" d="M0,196 H35 L45,178 L52,196 H85 L95,182 L103,210 L111,156 L119,196 H160 L172,186 L184,196 H230 L240,170 L248,196 H280"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
