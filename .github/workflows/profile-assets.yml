@@ -1,0 +1,67 @@
+name: Profile Assets
+
+# 記事では metrics.yml と profile3d.yml の2ファイルに分かれていますが、
+# 同時 push の衝突を避けるため1ファイルにまとめ、最後に一度だけ push します。
+on:
+  schedule:
+    - cron: "0 0 * * *"      # 毎日 00:00 UTC (= 09:00 JST) に自動更新
+  workflow_dispatch:          # Actions タブから手動実行も可
+  # push トリガーは自己ループの原因になるため意図的に外しています
+
+# 同時実行を1本に絞る（重複起動での push 衝突を防止）
+concurrency:
+  group: profile-assets
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write         # 生成物を commit / push するのに必要
+    steps:
+      - uses: actions/checkout@v4
+
+      # ---- lowlighter/metrics : メインパネル ----
+      - name: Metrics (base)
+        uses: lowlighter/metrics@latest
+        with:
+          user: yu531deve
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          filename: output/metrics.svg
+          output_action: none          # commit は最後にまとめて行う
+          config_timezone: Asia/Tokyo
+          base: header, activity, community, repositories, metadata
+          plugin_languages: yes
+          plugin_languages_details: bytes-size, percentage
+          plugin_languages_limit: 8
+          plugin_followup: yes
+          plugin_followup_indepth: yes
+
+      # ---- lowlighter/metrics : アチーブメント（別ファイル） ----
+      - name: Metrics (achievements)
+        uses: lowlighter/metrics@latest
+        with:
+          user: yu531deve
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          filename: output/metrics.achievements.svg
+          output_action: none
+          base: ""
+          plugin_achievements: yes
+          plugin_achievements_display: compact
+          plugin_achievements_threshold: C
+
+      # ---- yoshi389111/github-profile-3d-contrib : 3D草グラフ ----
+      - name: 3D contribution graph
+        uses: yoshi389111/github-profile-3d-contrib@0.7.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+
+      # ---- 生成物をまとめて1回だけ commit & push ----
+      - name: Commit & Push
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: update profile assets" || echo "No changes"
+          git push
