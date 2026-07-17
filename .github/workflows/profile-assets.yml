@@ -69,4 +69,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "chore: update profile assets" || echo "No changes"
+          # metrics ステップが自身のコンテナから commit/push して remote を進めており、
+          # runner 側の local ref は遅れている。そのままだと push が non-fast-forward で
+          # 弾かれるため、3D 分の commit を remote の上に rebase してから push する。
+          git pull --rebase origin main
           git push
