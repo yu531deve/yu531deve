@@ -28,7 +28,11 @@ jobs:
           user: yu531deve
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           filename: output/metrics.svg
-          output_action: none          # commit は最後にまとめて行う
+          # output_action: none だと metrics は生成物をコンテナ内 (/metrics_renders)
+          # にしか保存せず、ワークスペースに出てこない=最後の git add で拾えない。
+          # commit にして metrics 自身にワークスペースへ書き込み＋コミットさせる。
+          output_action: commit
+          committer_message: "chore: update metrics.svg"
           config_timezone: Asia/Tokyo
           base: header, activity, community, repositories, metadata
           plugin_languages: yes
@@ -44,7 +48,8 @@ jobs:
           user: yu531deve
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           filename: output/metrics.achievements.svg
-          output_action: none
+          output_action: commit
+          committer_message: "chore: update metrics.achievements.svg"
           base: ""
           plugin_achievements: yes
           plugin_achievements_display: compact
