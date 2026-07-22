@@ -62,6 +62,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
 
+      # ---- 3D草グラフのレーダーチャートに実数値を注記 ----
+      - name: Inject radar values
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          USERNAME: yu531deve
+        run: node scripts/inject-chart-values.mjs
+
       # ---- 生成物をまとめて1回だけ commit & push ----
       - name: Commit & Push
         run: |
