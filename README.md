@@ -54,11 +54,6 @@ based    Tokyo, Japan
 
 </div>
 
-<!-- ===== METRICS (languages, activity, community) ===== -->
-## `>_ metrics`
-
-<img src="./output/metrics.svg" width="100%" alt="metrics" />
-
 ---
 
 <div align="center">
