@@ -27,6 +27,8 @@ jobs:
         with:
           user: yu531deve
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          # データ取得は読み取り専用PAT、コミットはリポジトリ限定の一時トークンで行う
+          committer_token: ${{ github.token }}
           filename: output/metrics.svg
           # output_action: none だと metrics は生成物をコンテナ内 (/metrics_renders)
           # にしか保存せず、ワークスペースに出てこない=最後の git add で拾えない。
@@ -47,6 +49,7 @@ jobs:
         with:
           user: yu531deve
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          committer_token: ${{ github.token }}
           filename: output/metrics.achievements.svg
           output_action: commit
           committer_message: "chore: update metrics.achievements.svg"
