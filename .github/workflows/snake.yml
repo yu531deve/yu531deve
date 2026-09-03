@@ -2,7 +2,7 @@ name: Generate Snake
 
 on:
   schedule:
-    - cron: "0 */12 * * *"   # 12時間ごとに更新
+    - cron: "47 */6 * * *"   # 6時間ごとに更新（profile-assets とずらす）
   workflow_dispatch:          # 手動実行も可
   push:
     branches: [main]
