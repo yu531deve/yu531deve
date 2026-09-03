@@ -4,7 +4,7 @@ name: Profile Assets
 # 同時 push の衝突を避けるため1ファイルにまとめ、最後に一度だけ push します。
 on:
   schedule:
-    - cron: "0 0 * * *"      # 毎日 00:00 UTC (= 09:00 JST) に自動更新
+    - cron: "17 */6 * * *"   # 6時間ごとに自動更新（分を0以外にして混雑時の起動遅延を回避）
   workflow_dispatch:          # Actions タブから手動実行も可
   # push トリガーは自己ループの原因になるため意図的に外しています
 

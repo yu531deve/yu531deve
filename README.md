@@ -9,15 +9,27 @@
 
 <br/>
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=20&pause=900&color=808890&center=true&vCenter=true&width=640&height=42&lines=Brain+dynamics+%26+neural+field+theory;EEG+%2F+sleep-stage+classification;Neural+Operators+(FNO+%2F+PINN)+for+inverse+problems;Neuroscience+%C3%97+Machine+Learning" alt="typing" />
+<picture>
+  <source media="(prefers-color-scheme: dark)"  srcset="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=20&pause=900&color=808890&center=true&vCenter=true&width=640&height=42&lines=Brain+dynamics+%26+neural+field+theory;EEG+%2F+sleep-stage+classification;Neural+Operators+(FNO+%2F+PINN)+for+inverse+problems;Neuroscience+%C3%97+Machine+Learning" />
+  <source media="(prefers-color-scheme: light)" srcset="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=20&pause=900&color=57606A&center=true&vCenter=true&width=640&height=42&lines=Brain+dynamics+%26+neural+field+theory;EEG+%2F+sleep-stage+classification;Neural+Operators+(FNO+%2F+PINN)+for+inverse+problems;Neuroscience+%C3%97+Machine+Learning" />
+  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=500&size=20&pause=900&color=808890&center=true&vCenter=true&width=640&height=42&lines=Brain+dynamics+%26+neural+field+theory;EEG+%2F+sleep-stage+classification;Neural+Operators+(FNO+%2F+PINN)+for+inverse+problems;Neuroscience+%C3%97+Machine+Learning" alt="typing" />
+</picture>
 
 <br/>
 
 <a href="https://github.com/yu531deve">
-  <img src="https://komarev.com/ghpvc/?username=yu531deve&style=flat-square&color=808890&label=PROFILE+VIEWS" alt="views" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)"  srcset="https://komarev.com/ghpvc/?username=yu531deve&style=flat-square&color=808890&label=PROFILE+VIEWS" />
+    <source media="(prefers-color-scheme: light)" srcset="https://komarev.com/ghpvc/?username=yu531deve&style=flat-square&color=57606A&label=PROFILE+VIEWS" />
+    <img src="https://komarev.com/ghpvc/?username=yu531deve&style=flat-square&color=808890&label=PROFILE+VIEWS" alt="views" />
+  </picture>
 </a>
 <a href="https://github.com/yu531deve">
-  <img src="https://img.shields.io/github/followers/yu531deve?label=Follow&style=flat-square&color=808890&logo=github" alt="followers" />
+  <picture>
+    <source media="(prefers-color-scheme: dark)"  srcset="https://img.shields.io/github/followers/yu531deve?label=Follow&style=flat-square&color=808890&logo=github" />
+    <source media="(prefers-color-scheme: light)" srcset="https://img.shields.io/github/followers/yu531deve?label=Follow&style=flat-square&color=57606A&logo=github" />
+    <img src="https://img.shields.io/github/followers/yu531deve?label=Follow&style=flat-square&color=808890&logo=github" alt="followers" />
+  </picture>
 </a>
 
 </div>
@@ -48,7 +60,7 @@ based    Tokyo, Japan
 
 <picture>
   <source media="(prefers-color-scheme: dark)"  srcset="./profile-3d-contrib/profile-night-rainbow.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="./profile-3d-contrib/profile-season-animate.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="./profile-3d-contrib/profile-night-rainbow.svg" />
   <img src="./profile-3d-contrib/profile-night-rainbow.svg" width="100%" alt="3d contribution graph" />
 </picture>
 
